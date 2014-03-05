@@ -12,15 +12,9 @@ public class CompositeShapeTest {
         allShapes.add(new Circle(5));
         allShapes.add(0, 10, new Rectangle(10, 2));
 
-        StringBuilder output = new StringBuilder();
-        for (int y = 0; y < 12; y++) {
-            for (int x = 0; x < 10; x++) {
-                output.append(allShapes.isPixelOn(x, y) ? '#' : ' ');
-            }
-            output.append('\n');
-        }
+        String output = new Frame(10, 12).draw((x, y) -> allShapes.isPixelOn(x, y));
 
-        assertThat(output.toString()).isEqualTo("          \n" +
+        assertThat(output).isEqualTo("          \n" +
                 "   #####  \n" +
                 "  ####### \n" +
                 " #########\n" +
@@ -42,15 +36,9 @@ public class CompositeShapeTest {
         allShapes.add(2, 6, new Circle(5));
         allShapes.add(18, 6, new Circle(5));
 
-        StringBuilder output = new StringBuilder();
-        for (int y = 0; y < 16; y++) {
-            for (int x = 0; x < 30; x++) {
-                output.append(allShapes.isPixelOn(x, y) ? '#' : ' ');
-            }
-            output.append('\n');
-        }
+        String output = new Frame(30, 16).draw((x, y) -> allShapes.isPixelOn(x, y));
 
-        assertThat(output.toString()).isEqualTo("" +
+        assertThat(output).isEqualTo("" +
                 "       ###############        \n" +
                 "       ###############        \n" +
                 "       ###############        \n" +
