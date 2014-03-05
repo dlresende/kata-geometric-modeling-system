@@ -7,27 +7,9 @@ public class Circle extends Shape {
         this.radius = radius;
     }
 
-    String draw() {
-        StringBuffer circle = new StringBuffer();
-
-        for(int x = -radius; x < radius; x++) {
-            for(int y = -radius; y < radius; y++) {
-                if(isInside(x, y)) {
-                    circle.append("#");
-                }
-
-                else {
-                    circle.append(" ");
-                }
-            }
-
-            circle.append("\n");
-        }
-
-        return circle.toString();
-    }
-
-    private boolean isInside(int x, int y) {
-        return x * x + y * y < radius * radius;
+    boolean isPixelOn(int x, int y) {
+        int relativeX = x - radius;
+        int relativeY = y - radius;
+        return relativeX * relativeX + relativeY * relativeY < radius * radius;
     }
 }

@@ -10,9 +10,15 @@ public class CircleTest {
     public void should_draw_circle() {
         Circle circle = new Circle(5);
 
-        String drawnCircle = circle.draw();
+        StringBuilder drawnCircle = new StringBuilder();
+        for (int y = 0; y < 10; y++) {
+            for (int x = 0; x < 10; x++) {
+                drawnCircle.append(circle.isPixelOn(x, y) ? '#' : ' ');
+            }
+            drawnCircle.append('\n');
+        }
 
-        assertThat(drawnCircle).isEqualTo("          \n" +
+        assertThat(drawnCircle.toString()).isEqualTo("          \n" +
                 "   #####  \n" +
                 "  ####### \n" +
                 " #########\n" +
