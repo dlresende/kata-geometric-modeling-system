@@ -14,27 +14,30 @@ public class CompositeShape extends Shape {
         components.add(new ShapeWithRelativeCoords(topX, topY, shape));
     }
 
-    boolean isPixelOn(int x, int y) {
+    char getAsChar(int x, int y) {
         for (ShapeWithRelativeCoords component : components) {
             int relativeX = x - component.topX;
             int relativeY = y - component.topY;
             if (component.shape instanceof Circle) {
-                if (((Circle) component.shape).isPixelOn(relativeX, relativeY)) {
-                    return true;
+                char circleChar = ((Circle) component.shape).getAsChar(relativeX, relativeY);
+                if (circleChar != ' ') {
+                    return circleChar;
                 }
             }
             if (component.shape instanceof Rectangle) {
-                if (((Rectangle) component.shape).isPixelOn(relativeX, relativeY)) {
-                    return true;
+                char rectangleChar = ((Rectangle) component.shape).getAsChar(relativeX, relativeY);
+                if (rectangleChar != ' ') {
+                    return rectangleChar;
                 }
             }
             if (component.shape instanceof CompositeShape) {
-                if (((CompositeShape) component.shape).isPixelOn(relativeX, relativeY)) {
-                    return true;
+                char compositeChar = ((CompositeShape) component.shape).getAsChar(relativeX, relativeY);
+                if (compositeChar != ' ') {
+                    return compositeChar;
                 }
             }
         }
-        return false;
+        return ' ';
     }
 
     private static final class ShapeWithRelativeCoords {

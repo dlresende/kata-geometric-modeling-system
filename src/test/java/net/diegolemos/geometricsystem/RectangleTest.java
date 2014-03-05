@@ -9,7 +9,7 @@ public class RectangleTest {
     public void should_draw_a_rectangle() {
         Rectangle rectangle = new Rectangle(20, 5);
 
-        String drawnRectangle = new Frame(20, 5).draw((x, y) -> rectangle.isPixelOn(x, y));
+        String drawnRectangle = new Frame(20, 5).draw((x, y) -> rectangle.getAsChar(x, y));
 
         assertThat(drawnRectangle).isEqualTo("" +
                 "####################\n"+

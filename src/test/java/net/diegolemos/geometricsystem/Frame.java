@@ -9,11 +9,11 @@ public class Frame {
         this.height = height;
     }
 
-    public String draw(IsPixelOn isPixelOn) {
+    public String draw(CharSupplier charSupplier) {
         StringBuilder output = new StringBuilder();
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
-                output.append(isPixelOn.test(x, y) ? '#' : ' ');
+                output.append(charSupplier.getAsChar(x, y));
             }
             output.append('\n');
         }
