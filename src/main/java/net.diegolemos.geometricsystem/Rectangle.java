@@ -9,16 +9,7 @@ public class Rectangle extends Shape {
         this.height = height;
     }
 
-    String draw() {
-        StringBuilder output = new StringBuilder();
-
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
-                output.append(('#'));
-            }
-            output.append('\n');
-        }
-
-        return output.toString();
+    boolean isPixelOn(int x, int y) {
+        return 0 <= x && x < width && 0 <= y && y < height;
     }
 }
