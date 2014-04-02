@@ -7,9 +7,9 @@ public class Circle extends Shape {
         this.radius = radius;
     }
 
-    boolean isPixelOn(int x, int y) {
+    char getAsChar(int x, int y) {
         int relativeX = x - radius;
         int relativeY = y - radius;
-        return relativeX * relativeX + relativeY * relativeY < radius * radius;
+        return (relativeX * relativeX + relativeY * relativeY < radius * radius) ? '@' : ' ';
     }
 }

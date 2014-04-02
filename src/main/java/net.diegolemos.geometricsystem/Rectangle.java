@@ -9,7 +9,7 @@ public class Rectangle extends Shape {
         this.height = height;
     }
 
-    boolean isPixelOn(int x, int y) {
-        return 0 <= x && x < width && 0 <= y && y < height;
+    char getAsChar(int x, int y) {
+        return (0 <= x && x < width && 0 <= y && y < height) ? '#' : ' ';
     }
 }

@@ -8,25 +8,19 @@ public class CircleTest {
 
     @Test
     public void should_draw_circle() {
-        Circle circle = new Circle(5);
+        final Circle circle = new Circle(5);
 
-        StringBuilder drawnCircle = new StringBuilder();
-        for (int y = 0; y < 10; y++) {
-            for (int x = 0; x < 10; x++) {
-                drawnCircle.append(circle.isPixelOn(x, y) ? '#' : ' ');
-            }
-            drawnCircle.append('\n');
-        }
+        String drawnCircle = new Frame(10, 10).draw((x, y) -> circle.getAsChar(x, y));
 
-        assertThat(drawnCircle.toString()).isEqualTo("          \n" +
-                "   #####  \n" +
-                "  ####### \n" +
-                " #########\n" +
-                " #########\n" +
-                " #########\n" +
-                " #########\n" +
-                " #########\n" +
-                "  ####### \n" +
-                "   #####  \n");
+        assertThat(drawnCircle).isEqualTo("          \n" +
+                "   @@@@@  \n" +
+                "  @@@@@@@ \n" +
+                " @@@@@@@@@\n" +
+                " @@@@@@@@@\n" +
+                " @@@@@@@@@\n" +
+                " @@@@@@@@@\n" +
+                " @@@@@@@@@\n" +
+                "  @@@@@@@ \n" +
+                "   @@@@@  \n");
     }
 }

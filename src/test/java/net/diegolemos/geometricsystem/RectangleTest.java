@@ -9,15 +9,9 @@ public class RectangleTest {
     public void should_draw_a_rectangle() {
         Rectangle rectangle = new Rectangle(20, 5);
 
-        StringBuilder drawnRectangle = new StringBuilder();
-        for (int y = 0; y < 5; y++) {
-            for (int x = 0; x < 20; x++) {
-                drawnRectangle.append(rectangle.isPixelOn(x, y) ? '#' : ' ');
-            }
-            drawnRectangle.append('\n');
-        }
+        String drawnRectangle = new Frame(20, 5).draw((x, y) -> rectangle.getAsChar(x, y));
 
-        assertThat(drawnRectangle.toString()).isEqualTo("" +
+        assertThat(drawnRectangle).isEqualTo("" +
                 "####################\n"+
                 "####################\n"+
                 "####################\n"+
