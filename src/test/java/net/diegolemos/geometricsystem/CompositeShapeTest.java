@@ -12,18 +12,18 @@ public class CompositeShapeTest {
         allShapes.add(new Circle(5));
         allShapes.add(0, 10, new Rectangle(10, 2));
 
-        String output = new Frame(10, 12).draw(allShapes::getAsChar);
+        String output = new Frame(10, 12).draw(allShapes);
 
         assertThat(output).isEqualTo("          \n" +
-                                     "   @@@@@  \n" +
-                                     "  @@@@@@@ \n" +
-                                     " @@@@@@@@@\n" +
-                                     " @@@@@@@@@\n" +
-                                     " @@@@@@@@@\n" +
-                                     " @@@@@@@@@\n" +
-                                     " @@@@@@@@@\n" +
-                                     "  @@@@@@@ \n" +
-                                     "   @@@@@  \n" +
+                                     "   #####  \n" +
+                                     "  ####### \n" +
+                                     " #########\n" +
+                                     " #########\n" +
+                                     " #########\n" +
+                                     " #########\n" +
+                                     " #########\n" +
+                                     "  ####### \n" +
+                                     "   #####  \n" +
                                      "##########\n" +
                                      "##########\n");
     }
@@ -36,7 +36,7 @@ public class CompositeShapeTest {
         allShapes.add(2, 6, new Circle(5));
         allShapes.add(18, 6, new Circle(5));
 
-        String output = new Frame(30, 16).draw(allShapes::getAsChar);
+        String output = new Frame(30, 16).draw(allShapes);
 
         assertThat(output).isEqualTo("" +
                 "       ###############        \n" +
@@ -51,10 +51,10 @@ public class CompositeShapeTest {
                 "##############################\n" +
                 "##############################\n" +
                 "##############################\n" +
-                "   @@@@@@@@@       @@@@@@@@@  \n" +
-                "   @@@@@@@@@       @@@@@@@@@  \n" +
-                "    @@@@@@@         @@@@@@@   \n" +
-                "     @@@@@           @@@@@    \n");
+                "   #########       #########  \n" +
+                "   #########       #########  \n" +
+                "    #######         #######   \n" +
+                "     #####           #####    \n");
     }
 
 }

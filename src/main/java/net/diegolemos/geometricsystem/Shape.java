@@ -1,4 +1,5 @@
 package net.diegolemos.geometricsystem;
 
-public abstract class Shape {
+public interface Shape {
+    boolean isPixelOn(int x, int y);
 }

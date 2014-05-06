@@ -9,14 +9,17 @@ public class Frame {
         this.height = height;
     }
 
-    public String draw(CharSupplier charSupplier) {
+    public String draw(Shape shape) {
         StringBuilder output = new StringBuilder();
+
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
-                output.append(charSupplier.getAsChar(x, y));
+                char pixel = shape.isPixelOn(x, y) ? '#' : ' ';
+                output.append(pixel);
             }
             output.append('\n');
         }
+
         return output.toString();
     }
 }

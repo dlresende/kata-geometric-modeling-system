@@ -1,6 +1,6 @@
 package net.diegolemos.geometricsystem;
 
-public class Rectangle extends Shape {
+public class Rectangle implements Shape {
     private final int width;
     private final int height;
 
@@ -9,7 +9,8 @@ public class Rectangle extends Shape {
         this.height = height;
     }
 
-    char getAsChar(int x, int y) {
-        return (0 <= x && x < width && 0 <= y && y < height) ? '#' : ' ';
+    @Override
+    public boolean isPixelOn(int x, int y) {
+        return 0 <= x && x < width && 0 <= y && y < height;
     }
 }

@@ -3,7 +3,7 @@ package net.diegolemos.geometricsystem;
 import java.util.LinkedList;
 import java.util.List;
 
-public class CompositeShape extends Shape {
+public class CompositeShape implements Shape {
     private List<ShapeWithRelativeCoords> components = new LinkedList<>();
 
     void add(Shape shape) {
@@ -14,30 +14,26 @@ public class CompositeShape extends Shape {
         components.add(new ShapeWithRelativeCoords(topX, topY, shape));
     }
 
-    char getAsChar(int x, int y) {
+    @Override
+    public boolean isPixelOn(int x, int y) {
         for (ShapeWithRelativeCoords component : components) {
             int relativeX = x - component.topX;
             int relativeY = y - component.topY;
+
             if (component.shape instanceof Circle) {
-                char circleChar = ((Circle) component.shape).getAsChar(relativeX, relativeY);
-                if (circleChar != ' ') {
-                    return circleChar;
-                }
+                if (component.shape.isPixelOn(relativeX, relativeY)) return true;
             }
+
             if (component.shape instanceof Rectangle) {
-                char rectangleChar = ((Rectangle) component.shape).getAsChar(relativeX, relativeY);
-                if (rectangleChar != ' ') {
-                    return rectangleChar;
-                }
+                if (component.shape.isPixelOn(relativeX, relativeY)) return true;
             }
+
             if (component.shape instanceof CompositeShape) {
-                char compositeChar = ((CompositeShape) component.shape).getAsChar(relativeX, relativeY);
-                if (compositeChar != ' ') {
-                    return compositeChar;
-                }
+                if (component.shape.isPixelOn(relativeX, relativeY)) return true;
             }
         }
-        return ' ';
+
+        return false;
     }
 
     private static final class ShapeWithRelativeCoords {

@@ -1,15 +1,16 @@
 package net.diegolemos.geometricsystem;
 
-public class Circle extends Shape {
+public class Circle implements Shape {
     private final int radius;
 
     public Circle(int radius) {
         this.radius = radius;
     }
 
-    char getAsChar(int x, int y) {
+    @Override
+    public boolean isPixelOn(int x, int y) {
         int relativeX = x - radius;
         int relativeY = y - radius;
-        return (relativeX * relativeX + relativeY * relativeY < radius * radius) ? '@' : ' ';
+        return (relativeX * relativeX + relativeY * relativeY < radius * radius);
     }
 }
