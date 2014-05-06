@@ -9,7 +9,7 @@ public class CompositeShapeTest {
     @Test
     public void should_draw_composite_shape() throws Exception {
         CompositeShape allShapes = new CompositeShape();
-        allShapes.add(new Circle(5));
+        allShapes.add(0, 0, new Circle(5));
         allShapes.add(0, 10, new Rectangle(10, 2));
 
         String output = new Frame(10, 12).draw(allShapes);

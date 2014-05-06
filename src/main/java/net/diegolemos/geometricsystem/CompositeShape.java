@@ -6,10 +6,6 @@ import java.util.List;
 public class CompositeShape implements Shape {
     private List<ShapeWithRelativeCoordinates> shapes = new LinkedList<>();
 
-    void add(Shape shape) {
-        shapes.add(new ShapeWithRelativeCoordinates(shape));
-    }
-
     void add(int topX, int topY, Shape shape) {
         shapes.add(new ShapeWithRelativeCoordinates(topX, topY, shape));
     }
@@ -40,12 +36,6 @@ public class CompositeShape implements Shape {
         private final int topX;
         private final int topY;
         private final Shape shape;
-
-        private ShapeWithRelativeCoordinates(Shape shape) {
-            this.topX = 0;
-            this.topY = 0;
-            this.shape = shape;
-        }
 
         private ShapeWithRelativeCoordinates(int topX, int topY, Shape shape) {
             this.topX = topX;
