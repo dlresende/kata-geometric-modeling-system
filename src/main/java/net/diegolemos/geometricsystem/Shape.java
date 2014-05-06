@@ -1,4 +1,4 @@
 package net.diegolemos.geometricsystem;
 
-public class Shape {
+public abstract class Shape {
 }
