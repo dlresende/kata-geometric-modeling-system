@@ -4,19 +4,19 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class CompositeShape implements Shape {
-    private List<ShapeWithRelativeCoords> components = new LinkedList<>();
+    private List<ShapeWithRelativeCoordinates> shapes = new LinkedList<>();
 
     void add(Shape shape) {
-        components.add(new ShapeWithRelativeCoords(shape));
+        shapes.add(new ShapeWithRelativeCoordinates(shape));
     }
 
     void add(int topX, int topY, Shape shape) {
-        components.add(new ShapeWithRelativeCoords(topX, topY, shape));
+        shapes.add(new ShapeWithRelativeCoordinates(topX, topY, shape));
     }
 
     @Override
     public boolean isPixelOn(int x, int y) {
-        for (ShapeWithRelativeCoords component : components) {
+        for (ShapeWithRelativeCoordinates component : shapes) {
             int relativeX = x - component.topX;
             int relativeY = y - component.topY;
 
@@ -36,18 +36,18 @@ public class CompositeShape implements Shape {
         return false;
     }
 
-    private static final class ShapeWithRelativeCoords {
+    private static final class ShapeWithRelativeCoordinates {
         private final int topX;
         private final int topY;
         private final Shape shape;
 
-        private ShapeWithRelativeCoords(Shape shape) {
+        private ShapeWithRelativeCoordinates(Shape shape) {
             this.topX = 0;
             this.topY = 0;
             this.shape = shape;
         }
 
-        private ShapeWithRelativeCoords(int topX, int topY, Shape shape) {
+        private ShapeWithRelativeCoordinates(int topX, int topY, Shape shape) {
             this.topX = topX;
             this.topY = topY;
             this.shape = shape;
