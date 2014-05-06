@@ -10,7 +10,7 @@ public class CircleTest {
     public void should_draw_circle() {
         final Circle circle = new Circle(5);
 
-        String drawnCircle = new Frame(10, 10).draw((x, y) -> circle.getAsChar(x, y));
+        String drawnCircle = new Frame(10, 10).draw(circle::getAsChar);
 
         assertThat(drawnCircle).isEqualTo("          \n" +
                 "   @@@@@  \n" +

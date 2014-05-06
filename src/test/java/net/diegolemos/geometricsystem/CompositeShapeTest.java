@@ -12,7 +12,7 @@ public class CompositeShapeTest {
         allShapes.add(new Circle(5));
         allShapes.add(0, 10, new Rectangle(10, 2));
 
-        String output = new Frame(10, 12).draw((x, y) -> allShapes.getAsChar(x, y));
+        String output = new Frame(10, 12).draw(allShapes::getAsChar);
 
         assertThat(output).isEqualTo("          \n" +
                                      "   @@@@@  \n" +
@@ -36,7 +36,7 @@ public class CompositeShapeTest {
         allShapes.add(2, 6, new Circle(5));
         allShapes.add(18, 6, new Circle(5));
 
-        String output = new Frame(30, 16).draw((x, y) -> allShapes.getAsChar(x, y));
+        String output = new Frame(30, 16).draw(allShapes::getAsChar);
 
         assertThat(output).isEqualTo("" +
                 "       ###############        \n" +
