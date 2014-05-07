@@ -7,8 +7,7 @@ public class Circle implements Shape {
         this.radius = radius;
     }
 
-    @Override
-    public boolean isPixelOn(int x, int y) {
+    public boolean isPixelActivated(int x, int y) {
         int relativeX = x - radius;
         int relativeY = y - radius;
         return (relativeX * relativeX + relativeY * relativeY < radius * radius);

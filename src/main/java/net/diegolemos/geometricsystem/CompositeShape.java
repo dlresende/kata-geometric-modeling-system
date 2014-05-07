@@ -10,22 +10,21 @@ public class CompositeShape implements Shape {
         shapes.add(new ShapeWithRelativeCoordinates(topX, topY, shape));
     }
 
-    @Override
-    public boolean isPixelOn(int x, int y) {
+    public boolean shouldTurnOn(int x, int y) {
         for (ShapeWithRelativeCoordinates component : shapes) {
             int relativeX = x - component.topX;
             int relativeY = y - component.topY;
 
             if (component.shape instanceof Circle) {
-                if (component.shape.isPixelOn(relativeX, relativeY)) return true;
+                if (((Circle) component.shape).isPixelActivated(relativeX, relativeY)) return true;
             }
 
             if (component.shape instanceof Rectangle) {
-                if (component.shape.isPixelOn(relativeX, relativeY)) return true;
+                if (((Rectangle) component.shape).isPixelOn(relativeX, relativeY)) return true;
             }
 
             if (component.shape instanceof CompositeShape) {
-                if (component.shape.isPixelOn(relativeX, relativeY)) return true;
+                if (((CompositeShape) component.shape).shouldTurnOn(relativeX, relativeY)) return true;
             }
         }
 
