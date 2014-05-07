@@ -14,19 +14,7 @@ public class Frame {
 
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
-                char pixel = ' ';
-                if (shape instanceof Circle) {
-                    if (((Circle) shape).isPixelActivated(x, y)) pixel = '#';
-                }
-
-                if (shape instanceof Rectangle) {
-                    if (((Rectangle) shape).isPixelOn(x, y)) pixel = '#';
-                }
-
-                if (shape instanceof CompositeShape) {
-                    if (((CompositeShape) shape).shouldTurnOn(x, y)) pixel = '#';
-                }
-                output.append(pixel);
+                output.append(shape.isPixelOn(x, y) ? '#' : ' ');
             }
             output.append('\n');
         }

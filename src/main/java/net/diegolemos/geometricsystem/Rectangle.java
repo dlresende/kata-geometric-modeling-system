@@ -9,6 +9,7 @@ public class Rectangle implements Shape {
         this.height = height;
     }
 
+    @Override
     public boolean isPixelOn(int x, int y) {
         return 0 <= x && x < width && 0 <= y && y < height;
     }
